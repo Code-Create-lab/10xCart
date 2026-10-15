@@ -41,5 +41,9 @@ with sync_playwright() as p:
             else:
                 img.save(target, "WEBP", quality=84, method=6)
             print(f"{target.name}: {img.size[0]}x{img.size[1]}, {target.stat().st_size // 1024} KB")
+            if out_prefix == "admin-" and name == "dashboard":  # lighter hero version (srcset) for phones
+                small = out_dir / "admin-dashboard-960.webp"
+                img.resize((960, 540), Image.LANCZOS).save(small, "WEBP", quality=82, method=6)
+                print(f"{small.name}: 960x540, {small.stat().st_size // 1024} KB")
         page.close()
     browser.close()

@@ -50,11 +50,12 @@ AddCharset UTF-8 .html .css .js .txt .xml .json .webmanifest
   # Design sources are not part of the public site
   RewriteRule ^_design-src/ - [F,L]
 
-  # After your domain + SSL are live, uncomment to force HTTPS, one host (www) and / instead of /index.html.
-  # Replace www.yourdomain.com with your real domain (the same one you pass to build_seo.py).
-  # RewriteCond %{HTTPS} off [OR]
-  # RewriteCond %{HTTP_HOST} !^www\. [NC]
-  # RewriteRule ^ https://www.yourdomain.com%{REQUEST_URI} [L,R=301]
-  # RewriteCond %{THE_REQUEST} \s/index\.html[\s?] [NC]
-  # RewriteRule ^index\.html$ / [L,R=301]
+  # One canonical address for Google: https://10xcart.snehal.info/
+  # Force HTTPS (the X-Forwarded-Proto check prevents a redirect loop if a proxy/CDN is ever added in front)
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://10xcart.snehal.info%{REQUEST_URI} [L,R=301]
+  # /index.html -> / (avoids a duplicate copy of the homepage)
+  RewriteCond %{THE_REQUEST} \s/index\.html[\s?] [NC]
+  RewriteRule ^index\.html$ https://10xcart.snehal.info/ [L,R=301]
 </IfModule>
