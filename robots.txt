@@ -1,0 +1,97 @@
+# robots.txt for 10xCart
+# Search engines and AI assistants are welcome to read and cite this site.
+
+User-agent: *
+Disallow: /_design-src/
+Disallow: /dependencies/
+Disallow: /about.html
+Disallow: /blog-grid.html
+Disallow: /blog-single.html
+Disallow: /blog.html
+Disallow: /contact.html
+Disallow: /error.html
+Disallow: /faq.html
+Disallow: /index-eight.html
+Disallow: /index-eleven.html
+Disallow: /index-fifteen.html
+Disallow: /index-five.html
+Disallow: /index-four.html
+Disallow: /index-fourteen.html
+Disallow: /index-nine.html
+Disallow: /index-saaspik-original.html
+Disallow: /index-seven.html
+Disallow: /index-six.html
+Disallow: /index-ten.html
+Disallow: /index-thirteen.html
+Disallow: /index-three.html
+Disallow: /index-twelve.html
+Disallow: /index-two.html
+Disallow: /portfolio-one.html
+Disallow: /portfolio-single.html
+Disallow: /portfolio-three.html
+Disallow: /portfolio-two.html
+Disallow: /pricing.html
+Disallow: /service.html
+Disallow: /signin.html
+Disallow: /signup.html
+Disallow: /team.html
+Allow: /
+
+# AI search and assistant crawlers: explicitly welcome (same rules)
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-User
+User-agent: Claude-SearchBot
+User-agent: anthropic-ai
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: Bingbot
+User-agent: DuckAssistBot
+User-agent: Meta-ExternalAgent
+User-agent: Amazonbot
+User-agent: CCBot
+User-agent: cohere-ai
+User-agent: MistralAI-User
+Disallow: /_design-src/
+Disallow: /dependencies/
+Disallow: /about.html
+Disallow: /blog-grid.html
+Disallow: /blog-single.html
+Disallow: /blog.html
+Disallow: /contact.html
+Disallow: /error.html
+Disallow: /faq.html
+Disallow: /index-eight.html
+Disallow: /index-eleven.html
+Disallow: /index-fifteen.html
+Disallow: /index-five.html
+Disallow: /index-four.html
+Disallow: /index-fourteen.html
+Disallow: /index-nine.html
+Disallow: /index-saaspik-original.html
+Disallow: /index-seven.html
+Disallow: /index-six.html
+Disallow: /index-ten.html
+Disallow: /index-thirteen.html
+Disallow: /index-three.html
+Disallow: /index-twelve.html
+Disallow: /index-two.html
+Disallow: /portfolio-one.html
+Disallow: /portfolio-single.html
+Disallow: /portfolio-three.html
+Disallow: /portfolio-two.html
+Disallow: /pricing.html
+Disallow: /service.html
+Disallow: /signin.html
+Disallow: /signup.html
+Disallow: /team.html
+Allow: /
+
+# Blocked paths above: design sources and leftover template demo pages (not 10xCart content).
+# When you replace a template page with a real page, re-run build_seo.py (or delete the old file first).
+
+Sitemap: https://www.example.com/sitemap.xml
