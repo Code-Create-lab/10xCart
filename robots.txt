@@ -94,4 +94,4 @@ Allow: /
 # Blocked paths above: design sources and leftover template demo pages (not 10xCart content).
 # When you replace a template page with a real page, re-run build_seo.py (or delete the old file first).
 
-Sitemap: https://www.example.com/sitemap.xml
+Sitemap: https://10xcart.snehal.info/sitemap.xml

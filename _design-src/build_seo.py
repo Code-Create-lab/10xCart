@@ -1,8 +1,8 @@
 """Build every SEO / AI-discovery artefact for the 10xCart landing page from the content of index.html.
 
 Usage (from the site root):
-    python _design-src/build_seo.py                                   # placeholder domain (https://www.example.com)
-    python _design-src/build_seo.py --domain https://www.yourdomain.com
+    python _design-src/build_seo.py                                   # live domain (https://10xcart.snehal.info)
+    python _design-src/build_seo.py --domain https://another-domain.com   # if the site moves
 
 Re-run after changing any page content, prices or contact details. It (re)writes:
   index.html          <head> meta block (title, description, canonical, Open Graph, X/Twitter) + JSON-LD structured data
@@ -239,11 +239,10 @@ def robots(domain, blocked):
 
 
 def sitemap(domain, date):
-    imgs = [OG_IMAGE[0], LOGO[0]] + sorted(str(p.relative_to(ROOT)).replace("\\", "/") for p in (ROOT / "media" / "10xcart").glob("*.webp"))
-    img_xml = "".join(f"\n    <image:image><image:loc>{domain}/{i}</image:loc></image:image>" for i in imgs)
+    # Homepage only: it is the one real page on the site
     return ('<?xml version="1.0" encoding="UTF-8"?>\n'
-            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n'
-            f"  <url>\n    <loc>{domain}/</loc>\n    <lastmod>{date}</lastmod>{img_xml}\n  </url>\n</urlset>\n")
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+            f"  <url>\n    <loc>{domain}/</loc>\n    <lastmod>{date}</lastmod>\n  </url>\n</urlset>\n")
 
 
 def llms(domain, d):
@@ -328,7 +327,7 @@ def noindex_templates():
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--domain", default="https://www.example.com", help="live site origin, e.g. https://www.yourdomain.com")
+    ap.add_argument("--domain", default="https://10xcart.snehal.info", help="live site origin (no trailing slash)")
     ap.add_argument("--date", default=dt.date.today().isoformat(), help="last-modified date (YYYY-MM-DD)")
     a = ap.parse_args()
     domain = a.domain.rstrip("/")
