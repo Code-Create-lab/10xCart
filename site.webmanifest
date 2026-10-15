@@ -1,0 +1,23 @@
+{
+  "name": "10xCart \u2014 Ecommerce Website & App Development",
+  "short_name": "10xCart",
+  "description": "10xCart builds and maintains ecommerce websites and Android & iOS apps for small businesses in India, plus SaaS and custom software. Get a free demo.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "browser",
+  "background_color": "#ffffff",
+  "theme_color": "#09348e",
+  "lang": "en-IN",
+  "icons": [
+    {
+      "src": "assets/img/brand/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/img/brand/icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

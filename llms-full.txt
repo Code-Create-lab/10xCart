@@ -1,0 +1,223 @@
+# 10xCart — ecommerce website & app development company in India
+
+> 10xCart is an ecommerce website and app development company in India. It builds and maintains online stores, Android and iOS apps, multi-vendor marketplaces, SaaS products and custom software for small businesses.
+
+Source: https://www.example.com/ · Last updated: 2026-10-15
+
+## Contact
+- Sales phone: +91 98353 58531
+- Email: shreyadiwivedi@gmail.com
+- Free demo: https://www.example.com/#contact
+
+## Overview
+**Launch your online store & app. Turn clicks into customers.**
+
+We build and fully manage e-commerce websites and Android & iOS apps for small businesses — single store or multi-vendor marketplace. Need a SaaS product or custom software? We build that too.
+
+- **20+ years** of global e-commerce experience behind the platform
+- **3-in-1** Website, Android & iOS from one admin panel
+- **Unlimited** products, orders, customers & vendors
+- **100%** fully managed: setup, updates & support
+
+## Industries we build for
+Clothing & fashion, Grocery, Agriculture, Restaurants, Dairy, Bakery, Furniture, Electronics, Beauty & jewellery, Books & stationery.
+
+## What we build
+### E-commerce websites & apps
+Single-store or multi-vendor marketplaces on web, Android and iOS — with secure payments, real-time order tracking, delivery and a powerful admin built in.
+
+### SaaS product development
+From MVP to a subscription-ready platform: multi-tenant architecture, billing, dashboards and analytics.
+
+### Custom software & web apps
+CRMs, ERPs, booking systems, portals and internal tools built around how your business actually works.
+
+### Mobile app development
+Fast Android & iOS apps with push notifications, OTP login and store listing handled for you.
+
+### UI/UX & branding
+Eye-catching interfaces tailored to your brand, designed to turn browsers into buyers.
+
+### Maintenance & support
+Monitoring, updates and a real support team after launch — on your own domain and server.
+
+## Ecommerce platform
+- **Single vendor store**: A dedicated platform for your brand to showcase and sell your own products — website and apps included.
+- **Multi-vendor marketplace**: Let multiple sellers list and sell on one platform, creating a marketplace with diverse offerings.
+- **Omni-channel selling**: Customers shop from web browsers and mobile devices, with one catalogue kept in sync everywhere.
+- **Vendor admin app**: Sellers get their own interface to manage inventory, process orders and track sales on the platform.
+- **Delivery boy app**: Delivery staff manage orders, track deliveries and update delivery status in real time.
+- **Omni-domain**: Sell any type of inventory online — fashion, grocery, food, electronics and much more.
+
+## How it works
+1. **Free consultation**: Tell us about your business, products and goals. We recommend the right plan — no jargon.
+2. **Design & setup**: We brand your store and set up your catalogue, payments and delivery. You never touch any code.
+3. **Launch everywhere**: Go live on your website and get listed on Google Play and the Apple App Store.
+4. **Grow — we manage**: We handle updates, maintenance and support on your server while you focus on selling.
+
+## Why choose 10xCart
+- **User friendly**: Intuitive interfaces for you, your vendors and your customers.
+- **Super-fast speed**: Lightning-fast stores and apps that keep shoppers buying.
+- **Eye-catching UI**: Beautiful designs tailored to your business and brand.
+- **Fully managed app**: We develop, deploy, maintain, support and analyse — end to end.
+- **Built to scale**: Fast, optimised code keeps your store running smoothly, even on sale days.
+- **Best price**: Exceptional value at a competitive price, without compromising quality.
+
+## Features included in every store
+- **Unlimited orders**: Handle any number of orders seamlessly, without limits.
+- **Unlimited products**: List as many products as you want, with extensive inventory options.
+- **Unlimited categories**: Organise products into limitless categories for easier browsing.
+- **Unlimited customers**: Serve an endless number of customers as your business grows.
+- **Unlimited vendors**: Support unlimited sellers in your multi-vendor marketplace.
+- **Payment gateway integration**: Integrate multiple payment gateways for secure, convenient checkout.
+- **Instant payment QR codes**: A unique payment QR code is generated automatically for every order.
+- **Push notifications**: Send real-time offers and updates straight to your customers' phones.
+- **Secure OTP login**: Safe sign-up and login with OTP-based verification.
+- **Sales & inventory dashboard**: Track sales, orders and stock levels at a glance.
+- **Dynamic pricing**: Increase sales with dynamic product pricing and discounts.
+- **Your domain, your server**: Your store runs on hosting you own — we set it up and keep it maintained.
+- **Share products & categories**: Share links that open your products and categories directly in your app.
+- **Unlimited transactions**: Process unlimited transactions for smooth, uninterrupted sales.
+- **Memberships & loyalty tiers**: Create and assign customer loyalty tiers to reward repeat buyers.
+- **Order history**: Store and organise every past order for customers and admins.
+- **Wishlist**: Customers save their favourite products and come back to buy.
+- **Upgrade your existing app**: Revamp your current e-commerce app without interrupting your business.
+
+## Admin panel
+- **Dashboard**: See sales, orders, customers and average order value at a glance — plus a 30-day sales trend, top categories, recent orders and low-stock alerts.
+- **Orders**: Track every order from checkout to doorstep, with payment and delivery status in one clear list.
+- **Products**: Add and edit products, SKUs, prices and stock — no technical skills required.
+- **Categories**: Organise unlimited categories, drag to reorder them and choose where each one appears in your app and website.
+- **Customers**: See every customer's orders, spend and loyalty tier — and find your best buyers in seconds.
+- **Sellers**: For marketplaces: approve new sellers, track their sales and commission, and manage payouts.
+
+## Store designs (examples)
+- **Fashion & clothing**: Editorial magazine look with lookbook collections and curated picks.
+- **Grocery & daily needs**: Bold quick-commerce design with 10-minute delivery, daily deals and a floating cart.
+- **Restaurants & cloud kitchens**: Dark, appetising menu with dish sizes, add-ons and veg / non-veg tags.
+- **Electronics & gadgets**: Neon product-launch style with spec highlights and glass category tiles.
+- **Bakery & café**: Vintage menu-board look with today's bake and pick-up slot booking.
+- **Dairy & subscriptions**: Soft, friendly subscription app with a delivery calendar, wallet and plans.
+- **Furniture & home décor**: Calm Scandinavian room scenes with shop-the-look hotspots.
+- **Agriculture & farm supplies**: Farmer dashboard with weather, live mandi prices and crop advisories.
+
+## Plans and pricing
+Choose single-vendor or multi-vendor, then pick the platforms you need. Every plan includes setup, monthly maintenance and support.
+
+Every plan has a one-time setup cost and a monthly maintenance fee, billed monthly. You provide the domain and cloud server — we set everything up, maintain it and support you.
+
+### Web Only
+A fast, fully managed online store on your own website. Price: Custom quote (One-time setup + monthly maintenance, billed monthly).
+
+Included:
+- Monthly maintenance & support
+- E-commerce website
+- Unlimited products, orders, categories & customers
+- Sales & inventory dashboard
+- Payment gateway integration
+
+Added on multi-vendor plans:
+- Unlimited vendors + vendor dashboard
+
+Not included:
+- Domain & server (you provide)
+- Android & iOS apps
+
+### Android Only
+Your own branded Android app, listed on Google Play. Price: Custom quote (One-time setup + monthly maintenance, billed monthly).
+
+Included:
+- Monthly maintenance & support
+- Android app + Play Store listing
+- Push notifications
+- Unlimited products, orders, categories & customers
+- Sales & inventory dashboard
+- Payment gateway integration
+
+Added on multi-vendor plans:
+- Unlimited vendors + vendor dashboard
+
+Not included:
+- iOS app
+- Domain & server (you provide)
+
+### Android & iOS
+Branded apps for both Android and iPhone shoppers. Price: Custom quote (One-time setup + monthly maintenance, billed monthly).
+
+Included:
+- Monthly maintenance & support
+- Android & iOS apps
+- Google Play & App Store listing
+- Push notifications
+- Unlimited products, orders, categories & customers
+- Sales & inventory dashboard
+- Payment gateway integration
+
+Added on multi-vendor plans:
+- Unlimited vendors + vendor dashboard
+
+Not included:
+- Domain & server (you provide)
+
+### All in One
+Website + Android + iOS apps with your own domain — the complete package. Price: Custom quote (One-time setup + monthly maintenance, billed monthly).
+
+Included:
+- Monthly maintenance & support
+- E-commerce website
+- Android & iOS apps
+- Google Play & App Store listing
+- Push notifications
+- Unlimited products, orders, categories & customers
+- Sales & inventory dashboard
+- Payment gateway integration
+
+Added on multi-vendor plans:
+- Unlimited vendors + vendor dashboard
+
+Not included:
+- Domain & server (you provide)
+
+## Frequently asked questions
+### What's the difference between single-vendor and multi-vendor e-commerce apps?
+A single-vendor app is a store where one owner sells their products to many customers. A multi-vendor app is a marketplace where many sellers sell their products to many customers.
+
+### How much does it cost to develop an e-commerce app?
+Developing an e-commerce app from scratch typically costs between ₹80,000 and ₹20 lakhs in India. With 10xCart, you pay a one-time setup cost and a monthly maintenance fee — a much more competitive price, without compromising on quality.
+
+### Why is there a one-time setup cost?
+Setting up a shop and mobile apps isn't something a non-technical owner should have to do alone. Our development team handles the complete setup for you, which is covered by the one-time cost.
+
+### What does the monthly maintenance fee cover?
+It covers ongoing maintenance, updates, bug fixes and support for your store and apps, billed monthly. You provide your own domain and cloud server, so you stay in full control of your hosting.
+
+### Do I need my own domain and server?
+Yes. You buy and own the domain name and the cloud server (hosting). We set up your store and apps on it, connect your domain and keep everything maintained. Not sure what to buy? Ask us and we'll suggest options that fit your store.
+
+### Which platforms do you develop for — iOS, Android or both?
+Both. We develop for iOS and Android, making sure each app is built to an exceptional standard — and we can launch your website too.
+
+### Can you customise the app design to match our brand?
+Yes. We customise your store and app design — colours, logo, layout and more — to match your brand.
+
+### What features are essential for an e-commerce app?
+Every successful e-commerce store should have:
+
+- Responsive, good-looking design
+- Fast loading speed
+- Easy navigation and site search
+- A smooth cart and secure payments
+
+All of these come built in with 10xCart.
+
+### Are admin panels provided to manage products, orders and vendors?
+Yes. You get admin panels to easily manage products, orders and vendors — plus a dedicated vendor app on multi-vendor plans.
+
+### Can the app be integrated with our existing website or systems?
+10xCart is a complete 360-degree solution — storefront, apps, admin and payments — so most stores don't need any other system. If your business needs something beyond that, talk to our custom software team.
+
+### Do you offer maintenance and support after launch?
+Yes. Ongoing maintenance and support are included in your monthly maintenance plan once your store goes live.
+
+### Do you build SaaS products or custom software too?
+Yes. Beyond e-commerce, our team builds SaaS products, web apps, mobile apps and custom business software. Share your idea through the form below and we'll get back to you.
