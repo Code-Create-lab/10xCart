@@ -1,14 +1,60 @@
+# 10xCart — Apache / LiteSpeed settings (cPanel, Hostinger and most shared hosting).
+# Nginx and static hosts ignore this file — ask your host to enable gzip/brotli and caching there instead.
 
-# BEGIN cPanel-generated php ini directives, do not edit
-# Manual editing of this file may result in unexpected behavior.
-# To make changes to this file, use the cPanel MultiPHP INI Editor (Home >> Software >> MultiPHP INI Editor)
-# For more information, read our documentation (https://go.cpanel.net/EA4ModifyINI)
-<IfModule php8_module>
-   php_value error_log "/home2/uxdesig3/logs/php.error.log"
-   php_flag log_errors On
+# ---- Encoding & file types (UTF-8 keeps ₹ and other symbols intact in llms.txt for AI crawlers)
+AddDefaultCharset UTF-8
+AddCharset UTF-8 .html .css .js .txt .xml .json .webmanifest
+<IfModule mod_mime.c>
+  AddType application/manifest+json .webmanifest
+  AddType image/webp .webp
+  AddType font/woff2 .woff2
 </IfModule>
-<IfModule lsapi_module>
-   php_value error_log "/home2/uxdesig3/logs/php.error.log"
-   php_flag log_errors On
+
+# ---- Compression (faster first paint, better Core Web Vitals)
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/css text/plain text/xml application/javascript application/json application/xml application/manifest+json image/svg+xml
 </IfModule>
-# END cPanel-generated php ini directives, do not edit
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json application/xml application/manifest+json image/svg+xml
+</IfModule>
+
+# ---- Browser caching (HTML always fresh; images and fonts cached long)
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 week"
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/plain "access plus 1 day"
+  ExpiresByType text/xml "access plus 1 day"
+  ExpiresByType application/xml "access plus 1 day"
+  ExpiresByType text/css "access plus 1 week"
+  ExpiresByType application/javascript "access plus 1 week"
+  ExpiresByType image/webp "access plus 6 months"
+  ExpiresByType image/png "access plus 6 months"
+  ExpiresByType image/jpeg "access plus 6 months"
+  ExpiresByType image/x-icon "access plus 6 months"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# ---- Safe security headers + keep leftover template demo pages out of search results
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  <FilesMatch "^(about|blog|blog-grid|blog-single|contact|error|faq|pricing|service|signin|signup|team|portfolio-.+|index-.+)\.html$">
+    Header set X-Robots-Tag "noindex, nofollow"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Design sources are not part of the public site
+  RewriteRule ^_design-src/ - [F,L]
+
+  # After your domain + SSL are live, uncomment to force HTTPS, one host (www) and / instead of /index.html.
+  # Replace www.yourdomain.com with your real domain (the same one you pass to build_seo.py).
+  # RewriteCond %{HTTPS} off [OR]
+  # RewriteCond %{HTTP_HOST} !^www\. [NC]
+  # RewriteRule ^ https://www.yourdomain.com%{REQUEST_URI} [L,R=301]
+  # RewriteCond %{THE_REQUEST} \s/index\.html[\s?] [NC]
+  # RewriteRule ^index\.html$ / [L,R=301]
+</IfModule>
