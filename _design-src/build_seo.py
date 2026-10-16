@@ -12,12 +12,14 @@ Re-run after changing any page content, prices or contact details. It (re)writes
   llms-full.txt       the full page content in clean Markdown for AI assistants
   site.webmanifest    app name, colours and icons
 and adds <meta name="robots" content="noindex, nofollow"> to the leftover template demo pages.
+Then it runs build_perf.py (page speed: inlined CSS, font subsets, image sizes, JS cache version).
 """
 import argparse
 import datetime as dt
 import html as htmllib
 import json
 import re
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -242,7 +244,13 @@ def sitemap(domain, date, src):
     # Homepage only (the one real page), plus every image on it so Google Images can index the screenshots.
     # sitemap.xsl only styles the file for people opening it in a browser; crawlers ignore it.
     imgs = [f"{domain}/assets/img/brand/og-image.jpg"]
-    for s in re.findall(r'<img\b[^>]*?\bsrc="([^"]+)"', src):
+    for tag in re.findall(r"<img\b[^>]*>", src):
+        # The largest srcset size (Google Images prefers it), else the plain src
+        srcset = re.search(r'\bsrcset="([^"]+)"', tag)
+        if srcset:
+            s = max((c.split() for c in srcset.group(1).split(",")), key=lambda c: int(c[1][:-1]))[0]
+        else:
+            s = re.search(r'\bsrc="([^"]+)"', tag).group(1)
         u = s if s.startswith("http") else f"{domain}/{s.lstrip('/')}"
         if u.startswith(domain) and u not in imgs:
             imgs.append(u)
@@ -397,6 +405,10 @@ def main():
     (ROOT / "site.webmanifest").write_text(manifest(), encoding="utf-8", newline="\n")
     print(f"domain {domain} | {len(d['services'])} services, {len(d['platform'])} platform items, {len(d['plans'])} plans, "
           f"{len(d['features'])} features, {len(d['faq'])} FAQs | noindex on {len(templates)} template pages")
+
+    sys.dont_write_bytecode = True  # no __pycache__ folder inside the site
+    import build_perf  # page speed: runs after the SEO blocks so it works on the final index.html
+    build_perf.build()
 
 
 if __name__ == "__main__":

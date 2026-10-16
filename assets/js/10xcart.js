@@ -1,5 +1,10 @@
 /* 10xCart landing page interactions (no dependencies) */
-(function () {
+// Set up right after the page's first frame is painted, so this script never delays the first paint.
+(function (init) {
+	requestAnimationFrame(function () {
+		setTimeout(init, 0);
+	});
+})(function () {
 	"use strict";
 
 	var $ = function (sel, ctx) {
@@ -169,7 +174,9 @@
 			return (n < 10 ? "0" : "") + n;
 		};
 
-		var vRender = function () {
+		// animate is false on the first render: it must not read layout (offsetWidth, scrollWidth) or start
+		// a smooth scroll, because that would delay the page's first paint.
+		var vRender = function (animate) {
 			vAllSlides.forEach(function (slide) {
 				var o = Number(slide.dataset.i) - vActive;
 				if (o > vCount / 2) o -= vCount;
@@ -186,6 +193,7 @@
 			$(".v-count", vCaption).textContent = pad2(vActive + 1) + " / " + pad2(vCount);
 			$("h3", vCaption).textContent = slide.dataset.title;
 			$("p", vCaption).textContent = slide.dataset.text;
+			if (!animate) return;
 			vCaption.classList.remove("is-swap");
 			void vCaption.offsetWidth; // restart the caption fade
 			vCaption.classList.add("is-swap");
@@ -209,7 +217,7 @@
 
 		var vGo = function (i, fromUser) {
 			vActive = (i + vCount) % vCount;
-			vRender();
+			vRender(true);
 			if (fromUser) vSchedule();
 		};
 
@@ -354,7 +362,7 @@
 			).observe(visuals);
 		}
 
-		vRender();
+		vRender(false);
 		vSetPaused(vPaused);
 	}
 
@@ -493,7 +501,43 @@
 		}).observe(contact);
 	}
 
+	/* ---------- Sections below the first screen ---------- */
+	// CSS skips their layout until they come near the viewport (content-visibility: auto). After the visitor's
+	// first interaction they are laid out one per idle moment, so the scrollbar and in-page links become exact.
+	// A click on an in-page link lays out the rest at once, so the smooth scroll lands on its target.
+	var pendingSections = $$("main > section:not(.hero):not(.section-dark)");
+	var idle = window.requestIdleCallback || function (fn) {
+		return setTimeout(fn, 50);
+	};
+	var renderNextSection = function () {
+		var section = pendingSections.shift();
+		if (!section) return;
+		section.classList.add("is-rendered");
+		idle(renderNextSection);
+	};
+	var firstInteraction = ["scroll", "pointerdown", "keydown", "touchstart"];
+	var startRendering = function () {
+		firstInteraction.forEach(function (e) {
+			window.removeEventListener(e, startRendering);
+		});
+		idle(renderNextSection);
+	};
+	firstInteraction.forEach(function (e) {
+		window.addEventListener(e, startRendering, { passive: true });
+	});
+	document.addEventListener(
+		"click",
+		function (e) {
+			if (!e.target.closest || !e.target.closest('a[href^="#"]')) return;
+			pendingSections.forEach(function (section) {
+				section.classList.add("is-rendered");
+			});
+			pendingSections = [];
+		},
+		true
+	);
+
 	/* ---------- Footer year ---------- */
 	var year = $("#year");
 	if (year) year.textContent = new Date().getFullYear();
-})();
+});

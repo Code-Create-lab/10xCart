@@ -44,6 +44,10 @@ AddCharset UTF-8 .html .css .js .txt .xml .xsl .json .webmanifest
   <FilesMatch "^(about|blog|blog-grid|blog-single|contact|error|faq|pricing|service|signin|signup|team|portfolio-.+|index-.+)\.html$">
     Header set X-Robots-Tag "noindex, nofollow"
   </FilesMatch>
+  # index.html loads 10xcart.js with ?v=<content hash> (set by build_perf.py), so it can be cached for a year
+  <FilesMatch "^10xcart\.js$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
 </IfModule>
 
 <IfModule mod_rewrite.c>
