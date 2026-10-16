@@ -1,7 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://10xcart.snehal.info/</loc>
     <lastmod>2026-10-15</lastmod>
+    <image:image><image:loc>https://10xcart.snehal.info/assets/img/brand/og-image.jpg</image:loc></image:image>
+    <image:image><image:loc>https://10xcart.snehal.info/assets/img/brand/logo-horizontal@2x.webp</image:loc></image:image>
+    <image:image><image:loc>https://10xcart.snehal.info/media/10xcart/admin-dashboard-960.webp</image:loc></image:image>
+    <image:image><image:loc>https://10xcart.snehal.info/media/10xcart/screen-fashion.webp</image:loc></image:image>
+    <image:image><image:loc>https://10xcart.snehal.info/media/10xcart/screen-grocery.webp</image:loc></image:image>
+    <image:image><image:loc>https://10xcart.snehal.info/media/10xcart/screen-electronics.webp</image:loc></image:image>
+    <image:image><image:loc>https://10xcart.snehal.info/media/10xcart/admin-orders.webp</image:loc></image:image>
+    <image:image><image:loc>https://10xcart.snehal.info/media/10xcart/screen-restaurant.webp</image:loc></image:image>
+    <image:image><image:loc>https://10xcart.snehal.info/media/10xcart/admin-dashboard.webp</image:loc></image:image>
+    <image:image><image:loc>https://10xcart.snehal.info/media/10xcart/admin-products.webp</image:loc></image:image>
+    <image:image><image:loc>https://10xcart.snehal.info/media/10xcart/admin-categories.webp</image:loc></image:image>
+    <image:image><image:loc>https://10xcart.snehal.info/media/10xcart/admin-customers.webp</image:loc></image:image>
+    <image:image><image:loc>https://10xcart.snehal.info/media/10xcart/admin-sellers.webp</image:loc></image:image>
+    <image:image><image:loc>https://10xcart.snehal.info/media/10xcart/screen-bakery.webp</image:loc></image:image>
+    <image:image><image:loc>https://10xcart.snehal.info/media/10xcart/screen-dairy.webp</image:loc></image:image>
+    <image:image><image:loc>https://10xcart.snehal.info/media/10xcart/screen-furniture.webp</image:loc></image:image>
+    <image:image><image:loc>https://10xcart.snehal.info/media/10xcart/screen-agriculture.webp</image:loc></image:image>
+    <image:image><image:loc>https://10xcart.snehal.info/media/10xcart/web-fashion.webp</image:loc></image:image>
+    <image:image><image:loc>https://10xcart.snehal.info/media/10xcart/web-grocery.webp</image:loc></image:image>
+    <image:image><image:loc>https://10xcart.snehal.info/media/10xcart/web-restaurant.webp</image:loc></image:image>
+    <image:image><image:loc>https://10xcart.snehal.info/media/10xcart/web-electronics.webp</image:loc></image:image>
+    <image:image><image:loc>https://10xcart.snehal.info/media/10xcart/web-bakery.webp</image:loc></image:image>
+    <image:image><image:loc>https://10xcart.snehal.info/media/10xcart/web-dairy.webp</image:loc></image:image>
+    <image:image><image:loc>https://10xcart.snehal.info/media/10xcart/web-furniture.webp</image:loc></image:image>
+    <image:image><image:loc>https://10xcart.snehal.info/media/10xcart/web-agriculture.webp</image:loc></image:image>
+    <image:image><image:loc>https://10xcart.snehal.info/assets/img/brand/logo-horizontal-light@2x.webp</image:loc></image:image>
   </url>
 </urlset>

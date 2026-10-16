@@ -3,11 +3,12 @@
 
 # ---- Encoding & file types (UTF-8 keeps ₹ and other symbols intact in llms.txt for AI crawlers)
 AddDefaultCharset UTF-8
-AddCharset UTF-8 .html .css .js .txt .xml .json .webmanifest
+AddCharset UTF-8 .html .css .js .txt .xml .xsl .json .webmanifest
 <IfModule mod_mime.c>
   AddType application/manifest+json .webmanifest
   AddType image/webp .webp
   AddType font/woff2 .woff2
+  AddType text/xsl .xsl
 </IfModule>
 
 # ---- Compression (faster first paint, better Core Web Vitals)
