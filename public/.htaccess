@@ -5,6 +5,15 @@
 
     RewriteEngine On
 
+    # One canonical address for Google: https://10xcart.snehal.info/
+    # Force HTTPS (the X-Forwarded-Proto check prevents a redirect loop if a proxy/CDN is ever added in front)
+    RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    RewriteRule ^ https://10xcart.snehal.info%{REQUEST_URI} [L,R=301]
+
+    # /index.html -> / (old static homepage URL)
+    RewriteRule ^index\.html$ https://10xcart.snehal.info/ [L,R=301]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
