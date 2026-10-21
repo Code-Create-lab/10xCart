@@ -10,6 +10,9 @@
     RewriteCond %{HTTPS} !=on
     RewriteCond %{HTTP:X-Forwarded-Proto} !https
     RewriteRule ^ https://10xcart.snehal.info%{REQUEST_URI} [L,R=301]
+    # www -> bare domain
+    RewriteCond %{HTTP_HOST} ^www\. [NC]
+    RewriteRule ^ https://10xcart.snehal.info%{REQUEST_URI} [L,R=301]
 
     # /index.html -> / (old static homepage URL)
     RewriteRule ^index\.html$ https://10xcart.snehal.info/ [L,R=301]
