@@ -30,6 +30,16 @@ class AnalyticsTagTest extends TestCase
         $response->assertDontSee("gtag('config', '');", false);
     }
 
+    public function test_lead_form_carries_the_ads_conversion_label(): void
+    {
+        config(['site.ads_lead_conversion' => 'AW-987654321/TestLabel']);
+
+        $response = $this->get('/');
+
+        $response->assertOk();
+        $response->assertSee('<form data-conversion="AW-987654321/TestLabel"', false);
+    }
+
     public function test_homepage_does_not_render_google_tag_when_both_ids_are_empty(): void
     {
         config(['site.ga_id' => '', 'site.ads_id' => '']);

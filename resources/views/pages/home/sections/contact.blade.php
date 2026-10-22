@@ -21,8 +21,9 @@
 <div class="form-card reveal" style="--d:1">
 <h3>Request your free demo</h3>
 <p>Fields marked <span class="req">*</span> are required.</p>
-<!-- Submits to LeadController@store, which queues an email to the admins (config/site.php → lead_mail). -->
-<form data-endpoint="{{ route('lead.store') }}" data-mailto="{{ config('site.email') }}" data-phone="{{ config('site.phone_display') }}" id="lead-form" novalidate>
+<!-- Submits to LeadController@store, which queues an email to the admins (config/site.php → lead_mail).
+     On success 10xcart.js reports a Google Ads conversion (config/site.php → ads_lead_conversion). -->
+<form data-conversion="{{ config('site.ads_lead_conversion') }}" data-endpoint="{{ route('lead.store') }}" data-mailto="{{ config('site.email') }}" data-phone="{{ config('site.phone_display') }}" id="lead-form" novalidate>
 @csrf
 <div class="form-grid">
 <div class="field">

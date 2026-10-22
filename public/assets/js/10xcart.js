@@ -569,6 +569,8 @@
 				if (!res.ok) throw new Error(res.status);
 				form.reset();
 				showStatus("success", "Thank you! Your request has been sent — our team will contact you shortly.");
+				// Google Ads conversion (gtag comes from partials/analytics.blade.php and is missing when tags are off)
+				if (form.dataset.conversion && window.gtag) gtag("event", "conversion", { send_to: form.dataset.conversion });
 			})
 			.catch(function () {
 				showStatus("error", "Sorry, something went wrong. Please try again or call us on " + form.dataset.phone + ".");

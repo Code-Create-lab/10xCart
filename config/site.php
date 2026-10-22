@@ -23,6 +23,9 @@ return [
     // Google Ads tag ID for conversions and remarketing (empty = Ads tag disabled)
     'ads_id' => env('GOOGLE_ADS_ID', 'AW-333404538'),
 
+    // Google Ads conversion reported when the contact form is sent (empty = not reported)
+    'ads_lead_conversion' => env('GOOGLE_ADS_LEAD_CONVERSION', 'AW-333404538/8ZMECJrS598YEPqy_Z4B'),
+
     'phone' => '+919835358531',           // used in tel: links
     'phone_display' => '+91 98353 58531', // shown to visitors
     'email' => 'shreyadiwivedi@gmail.com',
