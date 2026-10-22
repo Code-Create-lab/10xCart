@@ -20,6 +20,9 @@ return [
     // Google Analytics 4 measurement ID (empty = analytics disabled)
     'ga_id' => env('GA_MEASUREMENT_ID', 'G-17DVL8E94W'),
 
+    // Google Ads tag ID for conversions and remarketing (empty = Ads tag disabled)
+    'ads_id' => env('GOOGLE_ADS_ID', 'AW-333404538'),
+
     'phone' => '+919835358531',           // used in tel: links
     'phone_display' => '+91 98353 58531', // shown to visitors
     'email' => 'shreyadiwivedi@gmail.com',
