@@ -15,7 +15,7 @@ Source: https://10xcart.snehal.info/ · Last updated: 2026-11-06
 
 We build and fully manage e-commerce websites and Android & iOS apps for small businesses across India — single store or multi-vendor marketplace. Need a SaaS product or custom software? We build that too.
 
-- **20+ years** of global e-commerce experience behind the platform
+- **12+ years** of global e-commerce experience behind the platform
 - **3-in-1** Website, Android & iOS from one admin panel
 - **Unlimited** products, orders, customers & vendors
 - **100%** fully managed: setup, updates & support

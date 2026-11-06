@@ -38,7 +38,7 @@
 </div>
 
 <dl class="stats">
-<div class="stat"><dt class="sr-only">Experience</dt><dd style="margin:0"><strong>20+ years</strong><span>of global e-commerce experience behind the platform</span></dd></div>
+<div class="stat"><dt class="sr-only">Experience</dt><dd style="margin:0"><strong>12+ years</strong><span>of global e-commerce experience behind the platform</span></dd></div>
 <div class="stat"><dt class="sr-only">Platforms</dt><dd style="margin:0"><strong>3-in-1</strong><span>Website, Android &amp; iOS from one admin panel</span></dd></div>
 <div class="stat"><dt class="sr-only">Limits</dt><dd style="margin:0"><strong>Unlimited</strong><span>products, orders, customers &amp; vendors</span></dd></div>
 <div class="stat"><dt class="sr-only">Management</dt><dd style="margin:0"><strong>100%</strong><span>fully managed: setup, updates &amp; support</span></dd></div>
