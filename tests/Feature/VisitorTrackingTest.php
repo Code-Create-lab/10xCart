@@ -115,6 +115,19 @@ class VisitorTrackingTest extends TestCase
         $this->assertSame('facebook / cpc', $visitor->fresh()->first_source);
     }
 
+    public function test_first_batch_without_scroll_or_engaged_time_is_recorded(): void
+    {
+        $batch = $this->batch(['events' => [['type' => 'page_view'], ['type' => 'section', 'name' => 'top']]]);
+        unset($batch['scroll'], $batch['engaged']);
+
+        $this->consented()->postJson(route('track'), $batch)->assertNoContent()->assertCookie('10x_vid');
+
+        $visit = Visit::sole();
+        $this->assertSame(0, $visit->max_scroll);
+        $this->assertSame(1, $visit->page_views);
+        $this->assertSame(['page_view'], $visit->events()->pluck('type')->all()); // unknown section ids are dropped
+    }
+
     public function test_bots_and_batches_without_a_visit_key_are_ignored(): void
     {
         $this->consented()->withHeader('User-Agent', 'Googlebot/2.1 (+http://www.google.com/bot.html)')

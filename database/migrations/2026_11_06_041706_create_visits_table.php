@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('visitor_id')->constrained()->cascadeOnDelete();
             $table->string('key', 40);
-            $table->timestamp('started_at')->index();
-            $table->timestamp('last_activity_at')->index();
+            $table->timestamp('started_at')->useCurrent()->index();
+            $table->timestamp('last_activity_at')->useCurrent()->index();
             $table->string('ip', 45)->nullable();
             $table->json('location')->nullable();
             $table->string('source', 120)->nullable();

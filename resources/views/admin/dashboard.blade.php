@@ -44,7 +44,7 @@
         @forelse ($liveVisits as $visit)
             <div class="small" style="padding:.3rem 0">
                 <a href="{{ route('admin.visitors.show', $visit->visitor) }}">{{ $visit->visitor->place() ?? $visit->ip }}</a>
-                <span class="muted">· {{ $visit->visitor->device }} · {{ $visit->source }} · {{ $visit->page_views }} pages · active {{ $visit->last_activity_at->diffForHumans() }}</span>
+                <span class="muted">· {{ $visit->visitor->device }} · {{ $visit->source }} · {{ $visit->page_views }} {{ Str::plural('page', $visit->page_views) }} · active {{ $visit->last_activity_at->diffForHumans() }}</span>
             </div>
         @empty
             <p class="muted small">Nobody right now.</p>

@@ -21,6 +21,13 @@ class Visit extends Model
     /** @use HasFactory<VisitFactory> */
     use HasFactory;
 
+    /** Same as the column defaults, so counters work on a model that was just created */
+    protected $attributes = [
+        'page_views' => 0,
+        'engaged_seconds' => 0,
+        'max_scroll' => 0,
+    ];
+
     protected function casts(): array
     {
         return [

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('type', 20);
             $table->string('name', 100)->nullable();
             $table->string('path', 200)->nullable();
-            $table->timestamp('created_at')->index();
+            $table->timestamp('created_at')->useCurrent()->index();
 
             $table->index(['type', 'created_at']);
         });

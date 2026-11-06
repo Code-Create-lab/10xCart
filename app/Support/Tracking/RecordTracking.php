@@ -9,6 +9,7 @@ use App\Models\VisitorEvent;
 use App\Support\Leads\VisitorContext;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 /**
@@ -45,27 +46,30 @@ final class RecordTracking
             return null;
         }
 
-        $visitor = $this->visitor($visitorUuid, $request, $context, $batch['traits'] ?? null);
-        $visit = $this->visit($visitor, $visitKey, $request, $context['last_touch'] ?? []);
-
         $events = $this->events($batch['events'] ?? null);
         $pageViews = count(array_filter($events, fn (array $event) => $event['type'] === 'page_view'));
         $engaged = VisitorContext::int($batch['engaged'] ?? null, self::MAX_ENGAGED_SECONDS) ?? 0;
+        $scroll = VisitorContext::int($batch['scroll'] ?? null, 100) ?? 0;
 
-        $visit->events()->createMany($events);
-        $visit->forceFill([
-            'last_activity_at' => now(),
-            'page_views' => $visit->page_views + $pageViews,
-            'engaged_seconds' => $visit->engaged_seconds + $engaged,
-            'max_scroll' => max($visit->max_scroll, VisitorContext::int($batch['scroll'] ?? null, 100) ?? 0),
-        ])->save();
+        return DB::transaction(function () use ($visitorUuid, $visitKey, $request, $context, $batch, $events, $pageViews, $engaged, $scroll) {
+            $visitor = $this->visitor($visitorUuid, $request, $context, $batch['traits'] ?? null);
+            $visit = $this->visit($visitor, $visitKey, $request, $context['last_touch'] ?? []);
 
-        $visitor->forceFill([
-            'page_views_count' => $visitor->page_views_count + $pageViews,
-            'engaged_seconds' => $visitor->engaged_seconds + $engaged,
-        ])->save();
+            $visit->events()->createMany($events);
+            $visit->forceFill([
+                'last_activity_at' => now(),
+                'page_views' => $visit->page_views + $pageViews,
+                'engaged_seconds' => $visit->engaged_seconds + $engaged,
+                'max_scroll' => max($visit->max_scroll, $scroll),
+            ])->save();
 
-        return $visitor;
+            $visitor->forceFill([
+                'page_views_count' => $visitor->page_views_count + $pageViews,
+                'engaged_seconds' => $visitor->engaged_seconds + $engaged,
+            ])->save();
+
+            return $visitor;
+        });
     }
 
     private function visitor(?string $uuid, Request $request, array $context, mixed $traits): Visitor
@@ -118,7 +122,7 @@ final class RecordTracking
             'last_source' => $visit->source,
         ])->save();
 
-        LocateVisit::dispatch($visit);
+        LocateVisit::dispatch($visit)->afterCommit();
 
         return $visit;
     }
@@ -143,9 +147,13 @@ final class RecordTracking
 
             $name = VisitorContext::text($event['name'] ?? null, 100);
 
+            if ($type === 'section' && ! isset(VisitorContext::SECTIONS[$name])) {
+                continue; // e.g. the hero ("top"): every visitor sees it
+            }
+
             $clean[] = [
                 'type' => $type,
-                'name' => $type === 'section' && $name !== null ? (VisitorContext::SECTIONS[$name] ?? $name) : $name,
+                'name' => $type === 'section' ? VisitorContext::SECTIONS[$name] : $name,
                 'path' => VisitorContext::text($event['path'] ?? null, 200),
                 'created_at' => now(),
             ];

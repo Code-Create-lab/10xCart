@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('visitors', function (Blueprint $table) {
             $table->id();
             $table->uuid()->unique();
-            $table->timestamp('first_seen_at');
-            $table->timestamp('last_seen_at')->index();
+            $table->timestamp('first_seen_at')->useCurrent();
+            $table->timestamp('last_seen_at')->useCurrent()->index();
             $table->unsignedInteger('visits_count')->default(0);
             $table->unsignedInteger('page_views_count')->default(0);
             $table->unsignedInteger('engaged_seconds')->default(0);

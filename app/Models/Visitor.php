@@ -25,6 +25,13 @@ class Visitor extends Model
     /** @use HasFactory<VisitorFactory> */
     use HasFactory, Prunable;
 
+    /** Same as the column defaults, so counters work on a model that was just created */
+    protected $attributes = [
+        'visits_count' => 0,
+        'page_views_count' => 0,
+        'engaged_seconds' => 0,
+    ];
+
     protected function casts(): array
     {
         return [
