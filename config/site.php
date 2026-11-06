@@ -45,11 +45,9 @@ return [
 
     'address' => 'Sample Business Park, Your City – 000000, India',
 
+    // Social profile icons in the footer and the home contact section (icons: partials/icons.blade.php)
     'socials' => [
-        ['label' => 'Facebook', 'icon' => 'b-facebook', 'url' => '#'],
-        ['label' => 'X (Twitter)', 'icon' => 'b-x', 'url' => '#'],
-        ['label' => 'LinkedIn', 'icon' => 'b-linkedin', 'url' => '#'],
-        ['label' => 'Pinterest', 'icon' => 'b-pinterest', 'url' => '#'],
+        ['label' => 'Instagram', 'icon' => 'b-instagram', 'url' => 'https://www.instagram.com/10xcart'],
     ],
 
     // Header menu: "label" on desktop, "mobile" in the mobile drawer

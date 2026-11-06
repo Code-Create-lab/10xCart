@@ -25,6 +25,9 @@
    "description": "10xCart is an ecommerce website and app development company in India. It builds and maintains online stores, Android and iOS apps, multi-vendor marketplaces, SaaS products and custom software for small businesses.",
    "email": "shreyadiwivedi@gmail.com",
    "telephone": "+919835358531",
+   "sameAs": [
+    "https://www.instagram.com/10xcart"
+   ],
    "contactPoint": [
     {
      "@type": "ContactPoint",

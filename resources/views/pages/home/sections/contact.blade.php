@@ -5,18 +5,13 @@
 <span class="eyebrow">Get in touch</span>
 <h2 class="h2" id="contact-title">Let's build your online store</h2>
 <p class="lead">Tell us a little about your business. We'll set up a free demo and recommend a plan that fits your budget.</p>
-<!-- SAMPLE contact details: replace the office address and social links (here and in the footer) with your real ones. Phone ({{ config('site.phone_display') }}) and email ({{ config('site.email') }}) are real. -->
+<!-- SAMPLE contact details: replace the office address with your real one. Phone ({{ config('site.phone_display') }}), email ({{ config('site.email') }}) and social links (config/site.php → socials) are real. -->
 <ul class="contact-list">
 <li><a href="tel:{{ config('site.phone') }}"><span class="card-icon"><svg aria-hidden="true" class="i"><use href="#i-phone"></use></svg></span><span><small>Sales</small><strong>{{ config('site.phone_display') }}</strong></span></a></li>
 <li><a href="mailto:{{ config('site.email') }}"><span class="card-icon"><svg aria-hidden="true" class="i"><use href="#i-mail"></use></svg></span><span><small>Email</small><strong>{{ config('site.email') }}</strong></span></a></li>
 <li><div><span class="card-icon"><svg aria-hidden="true" class="i"><use href="#i-pin"></use></svg></span><span><small>Office</small><strong>Office 101, Sample Business Park, Your City – 000000, India</strong></span></div></li>
 </ul>
-<div class="socials">
-<a aria-label="Facebook" href="#"><svg aria-hidden="true" class="i i-fill"><use href="#b-facebook"></use></svg></a>
-<a aria-label="X (Twitter)" href="#"><svg aria-hidden="true" class="i i-fill"><use href="#b-x"></use></svg></a>
-<a aria-label="LinkedIn" href="#"><svg aria-hidden="true" class="i i-fill"><use href="#b-linkedin"></use></svg></a>
-<a aria-label="Pinterest" href="#"><svg aria-hidden="true" class="i i-fill"><use href="#b-pinterest"></use></svg></a>
-</div>
+<x-socials />
 </div>
 <div class="form-card reveal" style="--d:1">
 <h3>Request your free demo</h3>
