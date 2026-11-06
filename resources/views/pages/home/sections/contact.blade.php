@@ -5,11 +5,14 @@
 <span class="eyebrow">Get in touch</span>
 <h2 class="h2" id="contact-title">Let's build your online store</h2>
 <p class="lead">Tell us a little about your business. We'll set up a free demo and recommend a plan that fits your budget.</p>
-<!-- SAMPLE contact details: replace the office address with your real one. Phone ({{ config('site.phone_display') }}), email ({{ config('site.email') }}) and social links (config/site.php → socials) are real. -->
+{{-- Phone, email and social links come from config/site.php. The office address below is a sample and is commented out
+     until the real one is added (also in the footer). --}}
 <ul class="contact-list">
 <li><a href="tel:{{ config('site.phone') }}"><span class="card-icon"><svg aria-hidden="true" class="i"><use href="#i-phone"></use></svg></span><span><small>Sales</small><strong>{{ config('site.phone_display') }}</strong></span></a></li>
 <li><a href="mailto:{{ config('site.email') }}"><span class="card-icon"><svg aria-hidden="true" class="i"><use href="#i-mail"></use></svg></span><span><small>Email</small><strong>{{ config('site.email') }}</strong></span></a></li>
+{{-- Office address, hidden for now:
 <li><div><span class="card-icon"><svg aria-hidden="true" class="i"><use href="#i-pin"></use></svg></span><span><small>Office</small><strong>Office 101, Sample Business Park, Your City – 000000, India</strong></span></div></li>
+--}}
 </ul>
 <x-socials />
 </div>

@@ -43,6 +43,7 @@ return [
         'cc' => ['sr.snehal369@gmail.com'],
     ],
 
+    // Sample office address: hidden for now (commented out in the footer and the home contact section)
     'address' => 'Sample Business Park, Your City – 000000, India',
 
     // Social profile icons in the footer and the home contact section (icons: partials/icons.blade.php)

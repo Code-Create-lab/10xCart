@@ -25,7 +25,7 @@
 <ul>
 <li><a href="tel:{{ config('site.phone') }}">{{ config('site.phone_display') }} (Sales)</a></li>
 <li><a href="mailto:{{ config('site.email') }}">{{ config('site.email') }}</a></li>
-<li><span>{{ config('site.address') }}</span></li>
+{{-- Office address, hidden for now: <li><span>{{ config('site.address') }}</span></li> --}}
 </ul>
 </address>
 </div>
