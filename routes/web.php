@@ -13,6 +13,10 @@ Route::view('/', 'pages.home.index')->name('home');
 // Portfolio for clients: shared by link only (not linked from the site, noindex). Content: config/work.php
 Route::view('/work', 'pages.work.index')->name('work');
 
+// Legal pages, linked from the footer and the cookie banner (config/site.php → legal)
+Route::view('/privacy-policy', 'pages.legal.privacy')->name('privacy');
+Route::view('/terms', 'pages.legal.terms')->name('terms');
+
 // Contact form (max 5 submissions per minute per visitor)
 Route::post('/contact', [LeadController::class, 'store'])
     ->middleware('throttle:5,1')

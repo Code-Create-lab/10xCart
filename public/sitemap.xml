@@ -31,4 +31,12 @@
     <image:image><image:loc>https://10xcart.snehal.info/media/10xcart/web-agriculture.webp</image:loc></image:image>
     <image:image><image:loc>https://10xcart.snehal.info/assets/img/brand/logo-horizontal-light-395.webp</image:loc></image:image>
   </url>
+  <url>
+    <loc>https://10xcart.snehal.info/privacy-policy</loc>
+    <lastmod>2026-11-06</lastmod>
+  </url>
+  <url>
+    <loc>https://10xcart.snehal.info/terms</loc>
+    <lastmod>2026-11-06</lastmod>
+  </url>
 </urlset>

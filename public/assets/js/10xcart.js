@@ -647,14 +647,14 @@
 				choose(btn.dataset.consent);
 			});
 		});
-		var settings = $("#cookie-settings");
-		if (settings) {
-			settings.addEventListener("click", function (e) {
+		// "Cookie settings" links (footer, privacy policy) reopen the banner
+		$$('a[href="#cookie-consent"]').forEach(function (link) {
+			link.addEventListener("click", function (e) {
 				e.preventDefault();
 				box.hidden = false;
 				$("[data-consent]", box).focus();
 			});
-		}
+		});
 
 		if (consent() === "granted") start();
 		else if (!consent()) box.hidden = false;

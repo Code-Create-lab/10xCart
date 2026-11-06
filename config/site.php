@@ -85,9 +85,17 @@ return [
         ],
     ],
 
+    // Footer legal links ("Privacy policy" is also linked from the cookie banner)
     'legal' => [
-        'Privacy policy' => '#',
-        'Terms' => '#',
+        'Privacy policy' => '/privacy-policy',
+        'Terms' => '/terms',
+    ],
+
+    // Who runs 10xCart, as named in the privacy policy and terms (resources/views/pages/legal)
+    'company' => [
+        'legal_name' => '10xCart',   // registered name of the business, e.g. "10xCart Technologies Pvt. Ltd."
+        'grievance_officer' => null, // person who answers privacy requests (null = shown as "Grievance Officer")
+        'jurisdiction' => null,      // city whose courts hear disputes, e.g. "Patna, Bihar" (null = courts in India)
     ],
 
 ];
