@@ -662,7 +662,7 @@
 		return { event: event, flush: flush };
 	})();
 
-	/* ---------- Lead form ---------- */
+	/* ---------- Lead form (home page only) ---------- */
 	var form = $("#lead-form");
 	var statusEl = $("#form-status");
 
@@ -689,9 +689,11 @@
 		if (input.id === "f-interest" && !v) return "Please choose what you're interested in.";
 		return "";
 	}
-	var validated = ["f-name", "f-phone", "f-email", "f-interest"].map(function (id) {
-		return document.getElementById(id);
-	});
+	var validated = form
+		? ["f-name", "f-phone", "f-email", "f-interest"].map(function (id) {
+				return document.getElementById(id);
+			})
+		: [];
 	validated.forEach(function (input) {
 		input.addEventListener("blur", function () {
 			var msg = validate(input);
@@ -708,7 +710,7 @@
 		statusEl.textContent = msg;
 	}
 
-	form.addEventListener("submit", function (e) {
+	if (form) form.addEventListener("submit", function (e) {
 		e.preventDefault();
 		var firstInvalid = null;
 		validated.forEach(function (input) {
@@ -773,10 +775,47 @@
 			heroVisible = entries[0].isIntersecting;
 			sync();
 		}).observe(hero);
-		new IntersectionObserver(function (entries) {
-			contactVisible = entries[0].isIntersecting;
-			sync();
-		}).observe(contact);
+		if (contact) {
+			new IntersectionObserver(function (entries) {
+				contactVisible = entries[0].isIntersecting;
+				sync();
+			}).observe(contact);
+		}
+	}
+
+	/* ---------- Work page: project filter ---------- */
+	// Buttons in pages/work/sections/projects.blade.php show one category of projects (data-category).
+	var workFilters = $("#work-filters");
+	if (workFilters) {
+		var workButtons = $$("[data-filter]", workFilters);
+		var workCards = $$(".work-card[data-category]");
+		var workCount = $("#work-count");
+		var workGrid = $("#work-grid");
+		var workNext = $("#work-next");
+		workFilters.hidden = false;
+		workButtons.forEach(function (btn) {
+			btn.addEventListener("click", function () {
+				var filter = btn.dataset.filter;
+				var shown = 0;
+				var oneColumn = 0; // shown projects that take one column (the featured one spans a row)
+				workButtons.forEach(function (b) {
+					b.setAttribute("aria-pressed", String(b === btn));
+				});
+				workCards.forEach(function (card) {
+					var match = filter === "all" || card.dataset.category === filter;
+					card.hidden = !match;
+					if (match) {
+						shown++;
+						if (!card.classList.contains("is-featured")) oneColumn++;
+						card.classList.add("is-visible"); // skip the scroll reveal for cards brought back by the filter
+					}
+				});
+				// The "Your project next" tile only fills a free half row (work.css)
+				workGrid.classList.toggle("is-even", oneColumn % 2 === 0);
+				workNext.classList.add("is-visible");
+				workCount.textContent = "Showing " + shown + (shown === 1 ? " project" : " projects");
+			});
+		});
 	}
 
 	/* ---------- Sections below the first screen ---------- */

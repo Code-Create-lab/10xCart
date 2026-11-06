@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'pages.home.index')->name('home');
 
+// Portfolio for clients: shared by link only (not linked from the site, noindex). Content: config/work.php
+Route::view('/work', 'pages.work.index')->name('work');
+
 // Contact form (max 5 submissions per minute per visitor)
 Route::post('/contact', [LeadController::class, 'store'])
     ->middleware('throttle:5,1')

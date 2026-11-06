@@ -1,10 +1,11 @@
 {{-- Site footer. Links, socials and contact details: config/site.php --}}
+@php($home = request()->routeIs('home') ? '' : route('home'))
 <!-- ============ Footer ============ -->
 <footer class="site-footer">
 <div class="container">
 <div class="footer-grid">
 <div class="footer-about">
-<a class="logo" href="#top"><img sizes="198px" srcset="{{ asset('assets/img/brand/logo-horizontal-light-198.webp') }} 198w, {{ asset('assets/img/brand/logo-horizontal-light-395.webp') }} 395w" alt="10xCart – Ecommerce web development" height="54" loading="lazy" src="{{ asset('assets/img/brand/logo-horizontal-light-198.webp') }}" width="198"/></a>
+<a class="logo" href="{{ $home ?: '#top' }}"><img sizes="198px" srcset="{{ asset('assets/img/brand/logo-horizontal-light-198.webp') }} 198w, {{ asset('assets/img/brand/logo-horizontal-light-395.webp') }} 395w" alt="10xCart – Ecommerce web development" height="54" loading="lazy" src="{{ asset('assets/img/brand/logo-horizontal-light-198.webp') }}" width="198"/></a>
 <p>10xCart is an ecommerce website and app development company in India. We build and manage online stores, Android &amp; iOS apps, multi-vendor marketplaces, SaaS products and custom software for small businesses.</p>
 <div class="socials">
 @foreach (config('site.socials') as $social)
@@ -17,7 +18,7 @@
 <h3>{{ $heading }}</h3>
 <ul>
 @foreach ($links as $label => $url)
-<li><a href="{{ $url }}">{{ $label }}</a></li>
+<li><a href="{{ str_starts_with($url, '#') ? $home.$url : $url }}">{{ $label }}</a></li>
 @endforeach
 </ul>
 </div>

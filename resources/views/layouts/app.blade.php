@@ -18,6 +18,8 @@
 @stack('head')
 <!-- Styles: edit public/assets/css/10xcart.css; it is minified and inlined here (cached until the file changes) -->
 <style>{!! \App\Support\Assets::inlineCss('assets/css/10xcart.css') !!}</style>
+{{-- Page-specific styles, after the site styles so they can build on them --}}
+@stack('styles')
 <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
