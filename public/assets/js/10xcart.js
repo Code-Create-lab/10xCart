@@ -426,7 +426,9 @@
 			saved.last_touch = currentTouch();
 			saved.first_touch = saved.first_touch || saved.last_touch;
 			saved.first_seen = saved.first_seen || saved.last_touch.at;
+			saved.visit_id = "";
 		}
+		saved.visit_id = saved.visit_id || Math.random().toString(36).slice(2, 10) + now.toString(36); // groups this visit's tracking events
 		saved.last_seen = now;
 		try {
 			localStorage.setItem(KEY, JSON.stringify(saved));
@@ -434,11 +436,14 @@
 
 		// Sections the visitor scrolled to, in order (counted when they cross the middle of the screen)
 		var viewed = [];
+		var onSection = null; // set by the visitor tracker after cookie consent
 		if ("IntersectionObserver" in window) {
 			var sectionObserver = new IntersectionObserver(
 				function (entries) {
 					entries.forEach(function (entry) {
-						if (entry.isIntersecting && viewed.indexOf(entry.target.id) === -1) viewed.push(entry.target.id);
+						if (!entry.isIntersecting || viewed.indexOf(entry.target.id) !== -1) return;
+						viewed.push(entry.target.id);
+						if (onSection) onSection(entry.target.id);
 					});
 				},
 				{ rootMargin: "-50% 0px -50% 0px" }
@@ -462,6 +467,13 @@
 		}
 
 		return {
+			visitId: saved.visit_id,
+			touch: saved.last_touch,
+			device: device,
+			viewed: viewed,
+			onSection: function (fn) {
+				onSection = fn;
+			},
 			snapshot: function () {
 				var timezone = "";
 				try {
@@ -484,6 +496,170 @@
 				};
 			}
 		};
+	})();
+
+	/* ---------- Cookie consent + visitor tracking ---------- */
+	// Nothing below runs until the visitor clicks "Accept" (partials/cookie-consent.blade.php).
+	// Then page views, sections reached, clicks, scroll depth and engaged time are sent in small
+	// batches to the site's own server (route "track" → app/Support/Tracking/RecordTracking.php)
+	// and shown in the admin panel under Visitors. Google tags switch to "granted" at the same time.
+	var tracker = (function () {
+		var box = $("#cookie-consent");
+		if (!box) return { event: function () {}, flush: function () {} };
+		var cookieName = box.dataset.cookie;
+		var endpoint = box.dataset.track;
+		var active = false;
+		var started = false;
+		var queue = [];
+		var engaged = 0; // seconds since the last batch
+		var maxScroll = 0;
+		var lastInput = Date.now();
+
+		function consent() {
+			var m = document.cookie.match(new RegExp("(?:^|; )" + cookieName + "=([^;]*)"));
+			return m ? m[1] : "";
+		}
+
+		function event(type, name) {
+			if (!active) return;
+			queue.push({ type: type, name: name ? String(name).slice(0, 100) : "", path: location.pathname });
+		}
+
+		function batch() {
+			var timezone = "";
+			try {
+				timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+			} catch (e) {}
+			var body = {
+				visit: visitor.visitId,
+				touch: visitor.touch,
+				device: visitor.device,
+				timezone: timezone,
+				language: navigator.language,
+				screen: screen.width + "x" + screen.height,
+				traits: {
+					viewport: innerWidth + "x" + innerHeight,
+					pixel_ratio: window.devicePixelRatio,
+					color_scheme: window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light",
+					connection: navigator.connection ? navigator.connection.effectiveType : "",
+					memory: navigator.deviceMemory,
+					cores: navigator.hardwareConcurrency,
+					languages: navigator.languages ? Array.prototype.slice.call(navigator.languages) : []
+				},
+				events: queue,
+				engaged: engaged,
+				scroll: maxScroll
+			};
+			queue = [];
+			engaged = 0;
+			return JSON.stringify(body);
+		}
+
+		// fetch while the page is open (so the visitor cookie in the reply is saved), sendBeacon when it closes
+		function flush(closing) {
+			if (!active || (!queue.length && !engaged)) return;
+			var body = batch();
+			if (closing && navigator.sendBeacon && navigator.sendBeacon(endpoint, new Blob([body], { type: "application/json" }))) return;
+			fetch(endpoint, { method: "POST", body: body, headers: { "Content-Type": "application/json" }, credentials: "same-origin", keepalive: true }).catch(function () {});
+		}
+
+		function start() {
+			active = true;
+			if (started) return;
+			started = true;
+			event("page_view", document.title);
+			visitor.viewed.forEach(function (id) {
+				event("section", id);
+			});
+			visitor.onSection(function (id) {
+				event("section", id);
+			});
+			flush(false);
+
+			["scroll", "pointerdown", "pointermove", "keydown", "touchstart"].forEach(function (e) {
+				addEventListener(
+					e,
+					function () {
+						lastInput = Date.now();
+					},
+					{ passive: true }
+				);
+			});
+			// Engaged time: the tab is visible and the visitor did something in the last minute
+			setInterval(function () {
+				if (active && !document.hidden && Date.now() - lastInput < 60000) engaged++;
+			}, 1000);
+			setInterval(function () {
+				flush(false);
+			}, 15000);
+			addEventListener(
+				"scroll",
+				function () {
+					var height = document.documentElement.scrollHeight - innerHeight;
+					if (height > 0) maxScroll = Math.max(maxScroll, Math.min(100, Math.round((scrollY / height) * 100)));
+				},
+				{ passive: true }
+			);
+			document.addEventListener("visibilitychange", function () {
+				if (document.hidden) flush(true);
+			});
+			addEventListener("pagehide", function () {
+				flush(true);
+			});
+
+			document.addEventListener(
+				"click",
+				function (e) {
+					var el = e.target.closest && e.target.closest("a, button");
+					if (!el || box.contains(el)) return;
+					var href = el.getAttribute("href") || "";
+					var name = el.dataset.plan ? "Get a quote: " + el.dataset.plan : el.getAttribute("aria-label") || el.textContent.trim().replace(/\s+/g, " ");
+					if (/^tel:/.test(href)) name = "Phone: " + name;
+					else if (/^mailto:/.test(href)) name = "Email: " + name;
+					else if (/wa\.me|whatsapp/i.test(href)) name = "WhatsApp: " + name;
+					event("click", name || href);
+				},
+				true
+			);
+
+			var leadForm = $("#lead-form");
+			if (leadForm) {
+				leadForm.addEventListener(
+					"input",
+					function () {
+						event("form_start", "Contact form");
+					},
+					{ once: true }
+				);
+			}
+		}
+
+		function choose(value) {
+			document.cookie = cookieName + "=" + value + "; path=/; max-age=" + 180 * 86400 + "; SameSite=Lax" + (location.protocol === "https:" ? "; Secure" : "");
+			box.hidden = true;
+			if (window.gtag) gtag("consent", "update", { analytics_storage: value, ad_storage: value, ad_user_data: value, ad_personalization: value });
+			if (value === "granted") start();
+			else active = false;
+		}
+
+		$$("[data-consent]", box).forEach(function (btn) {
+			btn.addEventListener("click", function () {
+				choose(btn.dataset.consent);
+			});
+		});
+		var settings = $("#cookie-settings");
+		if (settings) {
+			settings.addEventListener("click", function (e) {
+				e.preventDefault();
+				box.hidden = false;
+				$("[data-consent]", box).focus();
+			});
+		}
+
+		if (consent() === "granted") start();
+		else if (!consent()) box.hidden = false;
+
+		return { event: event, flush: flush };
 	})();
 
 	/* ---------- Lead form ---------- */
@@ -568,6 +744,8 @@
 			.then(function (res) {
 				if (!res.ok) throw new Error(res.status);
 				form.reset();
+				tracker.event("form_submit", data.get("interest"));
+				tracker.flush(false);
 				showStatus("success", "Thank you! Your request has been sent — our team will contact you shortly.");
 				// Google Ads conversion (gtag comes from partials/analytics.blade.php and is missing when tags are off)
 				if (form.dataset.conversion && window.gtag) gtag("event", "conversion", { send_to: form.dataset.conversion });

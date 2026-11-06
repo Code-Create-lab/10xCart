@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Jobs\SendLeadNotification;
 use App\Mail\NewLeadMail;
 use App\Support\Leads\IpLocation;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Queue;
@@ -12,6 +13,8 @@ use Tests\TestCase;
 
 class LeadFormTest extends TestCase
 {
+    use RefreshDatabase;
+
     private const CHROME_ANDROID = 'Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Mobile Safari/537.36';
 
     private array $form = [
@@ -59,6 +62,8 @@ class LeadFormTest extends TestCase
         $this->withHeader('User-Agent', self::CHROME_ANDROID)
             ->postJson(route('lead.store'), $this->form + ['visitor' => $this->visitorJson()])
             ->assertOk();
+
+        $this->assertDatabaseHas('leads', ['name' => 'Priya Mehta', 'phone' => '91234 56789', 'visitor_id' => null]);
 
         Queue::assertPushed(SendLeadNotification::class, function ($job) {
             $v = $job->lead['visitor'];

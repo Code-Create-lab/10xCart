@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Mail\NewLeadMail;
+use App\Models\Lead;
 use App\Support\Leads\IpLocation;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
@@ -25,6 +26,10 @@ class SendLeadNotification implements ShouldQueue
     public function handle(IpLocation $ipLocation): void
     {
         $lead = $this->lead + ['location' => $ipLocation->lookup($this->lead['ip'] ?? null)];
+
+        if (isset($lead['id'])) {
+            Lead::find($lead['id'])?->update(['location' => $lead['location']]);
+        }
 
         Mail::to(config('site.lead_mail.to'))
             ->cc(config('site.lead_mail.cc'))

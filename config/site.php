@@ -26,6 +26,14 @@ return [
     // Google Ads conversion reported when the contact form is sent (empty = not reported)
     'ads_lead_conversion' => env('GOOGLE_ADS_LEAD_CONVERSION', 'AW-333404538/8ZMECJrS598YEPqy_Z4B'),
 
+    // First-party visitor tracking (admin panel → Visitors). Runs only after the visitor
+    // clicks "Accept" in the cookie banner (resources/views/partials/cookie-consent.blade.php).
+    'tracking' => [
+        'consent_cookie' => '10x_consent',  // "granted" or "denied", set by the banner (readable by JavaScript)
+        'visitor_cookie' => '10x_vid',      // random visitor id, set by the server (encrypted, HTTP only)
+        'retention_days' => 395,            // visitors inactive this long are deleted (13 months)
+    ],
+
     'phone' => '+919835358531',           // used in tel: links
     'phone_display' => '+91 98353 58531', // shown to visitors
     'email' => 'shreyadiwivedi@gmail.com',

@@ -18,3 +18,6 @@ Schedule::command('queue:work --stop-when-empty --max-time=50 --tries=3')
     ->everyMinute()
     ->withoutOverlapping(5)
     ->runInBackground();
+
+// Deletes visitors (with their visits and events) inactive longer than config('site.tracking.retention_days')
+Schedule::command('model:prune')->daily();

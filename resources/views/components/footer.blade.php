@@ -39,6 +39,7 @@
 @foreach (config('site.legal') as $label => $url)
 <a href="{{ $url }}">{{ $label }}</a>
 @endforeach
+<a href="#cookie-consent" id="cookie-settings">Cookie settings</a>
 </nav>
 </div>
 </div>

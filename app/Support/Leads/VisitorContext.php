@@ -40,7 +40,16 @@ final class VisitorContext
     {
         $json = (string) $request->input('visitor', '');
         $client = strlen($json) <= 10000 ? json_decode($json, true) : null;
-        $client = is_array($client) ? $client : [];
+
+        return self::fromData(is_array($client) ? $client : [], $request);
+    }
+
+    /**
+     * Clean already-decoded browser data (same keys as the "visitor" JSON).
+     * Also used by the cookie-consented tracker: App\Support\Tracking\RecordTracking.
+     */
+    public static function fromData(array $client, Request $request): array
+    {
         $userAgent = (string) $request->userAgent();
 
         return self::filled([
@@ -67,7 +76,7 @@ final class VisitorContext
     }
 
     /** One visit's traffic source: referrer, UTM tags, ad click id and landing page */
-    private static function touch(mixed $touch): ?array
+    public static function touch(mixed $touch): ?array
     {
         if (! is_array($touch)) {
             return null;
@@ -113,7 +122,7 @@ final class VisitorContext
         return array_values(array_unique(array_filter($names)));
     }
 
-    private static function text(mixed $value, int $max): ?string
+    public static function text(mixed $value, int $max): ?string
     {
         if (! is_string($value) && ! is_int($value)) {
             return null;
@@ -133,7 +142,7 @@ final class VisitorContext
         return Str::limit($value, 300, '…');
     }
 
-    private static function int(mixed $value, int $max = 1_000_000): ?int
+    public static function int(mixed $value, int $max = 1_000_000): ?int
     {
         return is_numeric($value) && $value >= 0 ? (int) min($value, $max) : null;
     }

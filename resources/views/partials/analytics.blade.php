@@ -1,10 +1,16 @@
 @php($tagIds = array_values(array_filter([config('site.ga_id'), config('site.ads_id')])))
+@php($analyticsConsent = request()->cookie(config('site.tracking.consent_cookie')) === 'granted' ? 'granted' : 'denied')
 @if ($tagIds)
 <!-- Google tag (gtag.js) for Google Analytics 4 and Google Ads. The 176 KB library loads once the page is shown: on the
      visitor's first scroll, tap, key press or mouse move, or 5 s after load. Queued commands (page_view) are sent then. -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2: cookies stay off until "Accept" in the cookie banner (partials/cookie-consent.blade.php)
+  gtag('consent', 'default', {
+    analytics_storage: '{{ $analyticsConsent }}', ad_storage: '{{ $analyticsConsent }}',
+    ad_user_data: '{{ $analyticsConsent }}', ad_personalization: '{{ $analyticsConsent }}'
+  });
   gtag('js', new Date());
 
 @foreach ($tagIds as $tagId)

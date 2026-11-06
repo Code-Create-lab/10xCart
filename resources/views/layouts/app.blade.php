@@ -35,6 +35,8 @@
 
 <x-mobile-cta />
 
+@include('partials.cookie-consent')
+
 <script defer src="{{ \App\Support\Assets::versioned('assets/js/10xcart.js') }}"></script>
 {{-- Structured data for search engines (schema.org) --}}
 @stack('schema')
