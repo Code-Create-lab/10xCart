@@ -3,7 +3,7 @@
 <div class="container">
 <div class="section-head reveal">
 <span class="eyebrow">App designs</span>
-<h2 id="showcase-title">Store designs for every business</h2>
+<h2 id="showcase-title">Ecommerce website &amp; app designs for every business</h2>
 <p class="lead">Get an e-commerce website and app for clothing, grocery, agriculture, restaurants, dairy, bakery and more.</p>
 </div>
 <div aria-label="Store designs" aria-roledescription="carousel" class="visuals reveal" id="visuals">

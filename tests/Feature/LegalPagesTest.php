@@ -30,6 +30,23 @@ class LegalPagesTest extends TestCase
         }
     }
 
+    #[DataProvider('legalPages')]
+    public function test_structured_data_describes_the_page_and_its_breadcrumb(string $routeName): void
+    {
+        $html = $this->get(route($routeName))->getContent();
+
+        preg_match('/<script type="application\/ld\+json">(.*?)<\/script>/s', $html, $jsonLd);
+        $graph = json_decode($jsonLd[1] ?? '', true)['@graph'] ?? [];
+
+        $this->assertSame(['WebPage', 'BreadcrumbList'], array_column($graph, '@type'));
+        $this->assertSame(route($routeName), $graph[0]['url']);
+    }
+
+    public function test_page_heading_is_escaped_only_once(): void
+    {
+        $this->get(route('terms'))->assertSee('<h1 id="legal-title">Terms &amp; Conditions</h1>', false);
+    }
+
     public function test_privacy_policy_names_the_cookies_the_site_sets(): void
     {
         $this->get(route('privacy'))

@@ -3,7 +3,7 @@
 <div class="container">
 <div class="section-head reveal">
 <span class="eyebrow">What we build</span>
-<h2 id="services-title">One partner for your store, your app and your software</h2>
+<h2 id="services-title">One partner for your ecommerce store, mobile app and software</h2>
 <p class="lead">Whether you're opening your first online shop or building the next SaaS platform, our team designs, develops and manages it end to end.</p>
 </div>
 <div class="bento">

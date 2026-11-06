@@ -5,9 +5,9 @@
 <div class="container">
 <div class="hero-grid">
 <div class="hero-copy">
-<span class="badge-pill"><span aria-hidden="true" class="pulse-dot"></span>Ecommerce website &amp; app development</span>
-<h1 id="hero-title">Launch your online store &amp; app. <span class="text-grad">Turn clicks into customers.</span></h1>
-<p class="lead">We build and fully manage e-commerce websites and Android &amp; iOS apps for small businesses — single store or multi-vendor marketplace. Need a SaaS product or custom software? We build that too.</p>
+{{-- The badge is the first line of the h1, so the main heading carries the page's topic (same as the <title>) --}}
+<h1 class="has-badge" id="hero-title"><span class="badge-pill"><span aria-hidden="true" class="pulse-dot"></span>Ecommerce website &amp; app development</span><span class="sr-only">: </span>Launch your online store &amp; app. <span class="text-grad">Turn clicks into customers.</span></h1>
+<p class="lead">We build and fully manage e-commerce websites and Android &amp; iOS apps for small businesses across India — single store or multi-vendor marketplace. Need a SaaS product or custom software? We build that too.</p>
 <div class="hero-actions">
 <a class="btn btn-accent" href="#contact">Get a free demo <svg aria-hidden="true" class="i i-arrow"><use href="#i-arrow-right"></use></svg></a>
 <a class="btn btn-ghost" href="#pricing">See plans</a>

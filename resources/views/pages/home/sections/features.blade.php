@@ -3,7 +3,7 @@
 <div class="container">
 <div class="section-head reveal">
 <span class="eyebrow">Packed with features</span>
-<h2 id="features-title">Everything you need to run and grow your store</h2>
+<h2 id="features-title">Every ecommerce feature you need to run and grow your store</h2>
 <p class="lead">We've only scratched the surface. Here's what comes built in with every 10xCart store.</p>
 </div>
 <div class="feature-grid" id="feature-grid">

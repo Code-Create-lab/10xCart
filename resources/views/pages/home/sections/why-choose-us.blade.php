@@ -12,7 +12,7 @@
 <div class="split-head">
 <span class="eyebrow reveal">Why choose 10xCart</span>
 <h2 class="h2 reveal" id="why-title">Built to sell more. Priced for small businesses.</h2>
-<p class="lead reveal">Empowering your e-commerce success with innovative solutions and unparalleled support.</p>
+<p class="lead reveal">Ecommerce websites and apps made for small businesses in India: fast, easy to run and backed by a real support team.</p>
 <ul class="why-list">
 <li class="reveal"><div class="card-icon"><svg aria-hidden="true" class="i"><use href="#i-pointer"></use></svg></div><div><h3>User friendly</h3><p>Intuitive interfaces for you, your vendors and your customers.</p></div></li>
 <li class="reveal" style="--d:1"><div class="card-icon"><svg aria-hidden="true" class="i"><use href="#i-zap"></use></svg></div><div><h3>Super-fast speed</h3><p>Lightning-fast stores and apps that keep shoppers buying.</p></div></li>

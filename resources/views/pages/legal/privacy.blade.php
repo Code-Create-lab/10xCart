@@ -5,7 +5,7 @@
      Google tags (partials/analytics.blade.php). Business details: config/site.php → company. --}}
 @section('seo')
 <title>Privacy Policy | 10xCart</title>
-<meta content="How 10xCart collects, uses and protects personal data from this website, the contact form and client projects, the cookies we use and your rights under India's DPDP Act." name="description"/>
+<meta content="How 10xCart collects, uses and protects personal data from our website, contact form and client projects, the cookies we use and your DPDP Act rights." name="description"/>
 <link href="{{ route('privacy') }}" rel="canonical"/>
 <meta content="#09348e" name="theme-color"/>
 <meta content="website" property="og:type"/>
@@ -15,6 +15,10 @@
 <meta content="Privacy Policy | 10xCart" property="og:title"/>
 <meta content="What personal data 10xCart collects, why, who we share it with and your rights." property="og:description"/>
 <meta content="{{ asset('assets/img/brand/og-image.jpg') }}" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="10xCart — ecommerce websites and apps for small businesses" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
 @endsection
 
 @section('content')

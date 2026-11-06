@@ -17,6 +17,11 @@
     # /index.html -> / (old static homepage URL)
     RewriteRule ^index\.html$ https://10xcart.snehal.info/ [L,R=301]
 
+    # /index.php and /index.php/page -> the clean URL, so no page is reachable at two addresses.
+    # THE_REQUEST is the browser's original request line, so the front-controller rewrite below never loops here.
+    RewriteCond %{THE_REQUEST} ^[A-Z]+\s/index\.php[\s/?] [NC]
+    RewriteRule ^index\.php(/(.*))?$ https://10xcart.snehal.info/$2 [L,R=301,NE]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]

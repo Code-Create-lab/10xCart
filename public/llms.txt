@@ -5,6 +5,7 @@
 - Website: https://10xcart.snehal.info/
 - Sales phone: +91 98353 58531
 - Email: shreyadiwivedi@gmail.com
+- Instagram: https://www.instagram.com/10xcart
 - Serves: small businesses across India
 - Pricing: custom quote per plan; one-time setup cost + monthly maintenance fee (billed monthly). Clients provide their own domain name and cloud server.
 
@@ -46,4 +47,6 @@
 
 ## Optional
 - [Full site content](https://10xcart.snehal.info/llms-full.txt): every section of the page in Markdown
+- [Privacy policy](https://10xcart.snehal.info/privacy-policy): what personal data 10xCart collects, cookies and your rights
+- [Terms & conditions](https://10xcart.snehal.info/terms): quotes, payments, ownership, maintenance, cancellations and refunds
 - [Sitemap](https://10xcart.snehal.info/sitemap.xml)

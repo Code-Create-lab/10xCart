@@ -3,7 +3,7 @@
 <div class="container">
 <div class="section-head reveal">
 <span class="eyebrow">E-commerce platform</span>
-<h2 id="solutions-title">Everything your online business needs, in one platform</h2>
+<h2 id="solutions-title">Everything your online business needs, in one ecommerce platform</h2>
 <p class="lead">A cutting-edge e-commerce app tailored to single-vendor and multi-vendor businesses, with a seamless shopping experience across web, iOS and Android.</p>
 </div>
 <ul class="pill-row reveal">

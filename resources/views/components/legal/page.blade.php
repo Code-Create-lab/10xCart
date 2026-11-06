@@ -5,7 +5,39 @@
 @push('styles')
 <style>{!! \App\Support\Assets::inlineCss('assets/css/legal.css') !!}</style>
 @endpush
-@php($updatedAt = \Illuminate\Support\Carbon::parse($updated))
+@php
+    $updatedAt = \Illuminate\Support\Carbon::parse($updated);
+    $pageUrl = url()->current();
+
+    // schema.org: this page as part of the site described on the home page (pages/home/schema.blade.php)
+    $schema = [
+        '@context' => 'https://schema.org',
+        '@graph' => [
+            [
+                '@type' => 'WebPage',
+                '@id' => $pageUrl.'#webpage',
+                'url' => $pageUrl,
+                'name' => $title.' | 10xCart',
+                'isPartOf' => ['@id' => route('home').'/#website'],
+                'about' => ['@id' => route('home').'/#organization'],
+                'inLanguage' => 'en-IN',
+                'dateModified' => $updatedAt->toDateString(),
+                'breadcrumb' => ['@id' => $pageUrl.'#breadcrumb'],
+            ],
+            [
+                '@type' => 'BreadcrumbList',
+                '@id' => $pageUrl.'#breadcrumb',
+                'itemListElement' => [
+                    ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => route('home').'/'],
+                    ['@type' => 'ListItem', 'position' => 2, 'name' => $title],
+                ],
+            ],
+        ],
+    ];
+@endphp
+@push('schema')
+<script type="application/ld+json">{!! json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) !!}</script>
+@endpush
 <section aria-labelledby="legal-title" class="hero legal-hero">
 <div aria-hidden="true" class="blob blob-1"></div>
 <div class="container">

@@ -698,6 +698,18 @@ main > section:not(.hero):not(.section-dark):not(.is-rendered) {
 	font-weight: 700;
 }
 
+/* Home hero: the badge is the first line of the h1 and keeps its own look */
+.hero h1.has-badge {
+	margin-top: 0;
+}
+
+.hero h1 > .badge-pill {
+	display: flex;
+	width: fit-content;
+	margin-bottom: 1.25rem;
+	letter-spacing: normal;
+}
+
 .text-grad {
 	background: linear-gradient(92deg, #b63613 0%, var(--accent-bright) 72%);
 	-webkit-background-clip: text;

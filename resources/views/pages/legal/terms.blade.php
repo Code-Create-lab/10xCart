@@ -5,7 +5,7 @@
      Business details: config/site.php → company. --}}
 @section('seo')
 <title>Terms &amp; Conditions | 10xCart</title>
-<meta content="The terms for using the 10xCart website and for our e-commerce, app and custom software services: quotes, payments, ownership, maintenance, cancellations and refunds." name="description"/>
+<meta content="Terms for using the 10xCart website and our ecommerce, app and software services: quotes, payments, ownership, maintenance, cancellations and refunds." name="description"/>
 <link href="{{ route('terms') }}" rel="canonical"/>
 <meta content="#09348e" name="theme-color"/>
 <meta content="website" property="og:type"/>
@@ -15,6 +15,10 @@
 <meta content="Terms &amp; Conditions | 10xCart" property="og:title"/>
 <meta content="Quotes, payments, ownership, maintenance, cancellations and refunds for 10xCart's services." property="og:description"/>
 <meta content="{{ asset('assets/img/brand/og-image.jpg') }}" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="10xCart — ecommerce websites and apps for small businesses" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
 @endsection
 
 @section('content')
@@ -39,7 +43,7 @@
         'changes' => 'Changes to these terms',
     ];
 @endphp
-<x-legal.page :toc="$toc" title="Terms &amp; Conditions" updated="2026-11-06">
+<x-legal.page :toc="$toc" title="Terms & Conditions" updated="2026-11-06">
 <x-slot:intro>These terms apply when you use this website and when you hire 10xCart to build or maintain a store, app or software. Please read them before you accept a quote from us.</x-slot:intro>
 
 <x-slot:summary title="In short">

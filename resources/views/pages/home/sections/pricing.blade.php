@@ -3,7 +3,7 @@
 <div class="container">
 <div class="section-head reveal">
 <span class="eyebrow">Plans</span>
-<h2 id="pricing-title">Simple plans for every stage of growth</h2>
+<h2 id="pricing-title">Simple ecommerce plans for every stage of growth</h2>
 <p class="lead">Choose single-vendor or multi-vendor, then pick the platforms you need. Every plan includes setup, monthly maintenance and support.</p>
 </div>
 <div class="segmented-wrap reveal">
